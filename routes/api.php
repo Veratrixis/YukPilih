@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PollsController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('/poll', PollsController::class);
+
+Route::post('/poll/{poll_id}/vote/{choice_id}', [PollsController::class, 'vote']);
+Route::post('/auth/login', [LoginController::class, 'login']);
+
+Route::post('/auth/logout', [UserController::class, 'logout']);
+Route::post('/auth/register', [UserController::class, 'register_user']);
+Route::get('/auth/me', [UserController::class, 'get_profile']);
+Route::post('/auth/reset_password', [UserController::class, 'reset_password']);

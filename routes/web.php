@@ -15,24 +15,28 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect('/login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/login', function () {
+    return Inertia::render('LoginPage');
+})->name('login');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/reset_password', function () {
+    return Inertia::render('ResetPassPage');
+})->name('resetpass');
 
-require __DIR__.'/auth.php';
+Route::get('/polls', function () {
+    return Inertia::render('PollsPage');
+})->name('polls');
+
+Route::get('/create_poll', function () {
+    return Inertia::render('CreatePollPage');
+})->name('login');
+
+Route::get('/profile', function () {
+    return Inertia::render('ProfilePage');
+})->name('me');
+
+// require __DIR__.'/auth.php';
