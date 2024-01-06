@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Inertia } from '@inertiajs/inertia';
 import axios from 'axios';
+import { Head } from '@inertiajs/react';
 
 export default function ProfilePage() {
     const [userData, setUserData] = useState(null);
@@ -53,6 +53,8 @@ export default function ProfilePage() {
 
     return (
       <div>
+        <Head title="Profile" />
+
         <nav>
           <button onClick={handleCancel}>Cancel</button>
         </nav>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Head } from '@inertiajs/react';
 import PollCard from '../Components/PollCard';
 
 export default function PollsPage() {
@@ -58,6 +59,8 @@ export default function PollsPage() {
 
   return (
     <div>
+      <Head title="Create Polls" />
+
       <nav>
         <button onClick={handleLogout}>Logout</button>
         <button onClick={handlePolls}>Add Polls</button>

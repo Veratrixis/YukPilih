@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Head } from '@inertiajs/react';
 
 export default function CreatePollPage() {
   const [title, setTitle] = useState('');
@@ -63,6 +64,8 @@ export default function CreatePollPage() {
 
   return (
     <div>
+      <Head title="Create Polls" />
+
       <nav>
         <button onClick={handleCancel}>Cancel</button>
       </nav>
